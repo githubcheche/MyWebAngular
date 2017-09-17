@@ -1,0 +1,14 @@
+
+hr{
+    padding: 0px;
+    margin: 0px;
+}
+
+.footer-block {
+    background-color: #0c328c;
+}
+
+.by-name , .by-info {
+    line-height: 100px;
+    color: #fef8fc;
+}
