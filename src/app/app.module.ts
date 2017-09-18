@@ -7,6 +7,9 @@ import { FooterComponent } from './footer/footer.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ContentComponent } from './content/content.component';
 import { StartsComponent } from './starts/starts.component';
+import { HotArticleComponent } from './hot-article/hot-article.component';
+import { HotLableComponent } from './hot-lable/hot-lable.component';
+import { MottoCardComponent } from './motto-card/motto-card.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { StartsComponent } from './starts/starts.component';
     FooterComponent,
     CarouselComponent,
     ContentComponent,
-    StartsComponent
+    StartsComponent,
+    HotArticleComponent,
+    HotLableComponent,
+    MottoCardComponent
   ],
   imports: [
     BrowserModule
