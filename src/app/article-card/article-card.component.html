@@ -1,0 +1,12 @@
+<a href="#"><h3>{{article.title}}</h3></a>
+<p class="article-info">由 {{article.author}} 发表于 {{article.time}}</p>
+<p class="article-content">{{article.content}}</p>
+
+  <span class="label label-info">{{article.lable}}</span>
+  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+  <span>{{article.checkNumber}}</span>
+  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+  <span>{{article.replies}}</span>
+  <app-stars [starNum]="article.importance"></app-stars>
+
+<hr>
