@@ -88,3 +88,15 @@
       background-color: #3760a7;
     }
   }
+
+
+.register, .login{
+    padding-right: 30px;
+    padding-top: 12px;
+    color: #fef8fc;
+    text-decoration:none;
+}
+.register:hover, 
+.login:hover{
+  color:#b8d1f6;
+}

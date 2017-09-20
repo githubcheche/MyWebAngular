@@ -1,4 +1,4 @@
-<a href="#"><h3>{{article.title}}</h3></a>
+<a href="#" [routerLink]="['/article', article.id]"><h3>{{article.title}}</h3></a>
 <p class="article-info">由 {{article.author}} 发表于 {{article.time}}</p>
 <p class="article-content">{{article.content}}</p>
 

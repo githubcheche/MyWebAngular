@@ -1,0 +1,47 @@
+.container{
+    padding-top: 40px;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: 700;
+    padding-bottom: 30px;
+}
+
+.author-small-img {
+    width: 48px;
+    border: 1px solid #aaa;
+    border-radius: 100px;
+    margin-top: 5px;
+}
+
+.article-message-info {
+
+    padding-top: 10px;
+    color: #999;
+    font-size: 13px;
+}
+
+.article-text{
+    padding-top: 30px;
+    font-size: 16px;
+    line-height: 1.5;
+    height: 1000px;
+}
+
+.author-label {
+    margin: 0;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+    border: 1px solid #ff4500;
+    padding: 2px;
+    margin-right: 12px;
+    font-weight: 500;
+    color: #ff4500;
+}
+
+.author-text-info{
+    padding-top: 6px;
+}
+

@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  private activeState:string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClick(eventName:string) {
+    console.log(eventName);
+    this.activeState=eventName;
   }
 
 }

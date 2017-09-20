@@ -1,19 +1,19 @@
-<div class="carousel slide" data-ride="carousel">
+<div class="carousel slide" data-ride="carousel" data-interval="2000">
   <ol class="carousel-indicators">
     <li *ngFor="let page of pages" [class.active]="page.active"></li>
   </ol>
 
   <div class="carousel-inner">
     <div class="item" *ngFor="let page of pages" [class.active]="page.active">
-      <img [src] ="page.url" alt="" class="slide-image">
+      <img [src]="page.url" alt="" class="slide-image">
     </div>
-    
+
   </div>
 
-<a href="javascript:$('.carousel').carousel('prev')" class="left carousel-control">
+  <a href="javascript:$('.carousel').carousel('prev')" class="left carousel-control">
   <span class="glyphicon glyphicon-chevron-left"></span>
 </a>
-<a href="javascript:$('.carousel').carousel('next')" class="right carousel-control">
+  <a href="javascript:$('.carousel').carousel('next')" class="right carousel-control">
     <span class="glyphicon glyphicon-chevron-right"></span>    
 </a>
 
