@@ -17,6 +17,11 @@ import { AboutComponent } from './about/about.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthorCardComponent } from './author-card/author-card.component';
+import { ArticleService } from './shared/article.service';
+import { RegisterAndLoginComponent } from './register-and-login/register-and-login.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -34,13 +39,16 @@ import { AuthorCardComponent } from './author-card/author-card.component';
     AboutComponent,
     ArticleDetailComponent,
     PageNotFoundComponent,
-    AuthorCardComponent
+    AuthorCardComponent,
+    RegisterAndLoginComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

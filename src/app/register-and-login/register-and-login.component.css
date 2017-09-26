@@ -1,0 +1,27 @@
+
+.contant{
+    margin: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+}
+
+a {
+    color: #3760a7;
+    font-weight: bold; 
+    text-decoration: none; 
+    margin: 0;
+    padding: 0; 
+    cursor: auto;
+    text-align: center;
+    font-size: 25px;
+}
+
+span {
+    padding: 0 20px;
+    text-align: center;
+    font-size: 25px;
+    color: #555;
+}
+

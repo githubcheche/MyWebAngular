@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticleCard } from '../shared/article.service';
 
 
 @Component({
@@ -27,16 +28,3 @@ export class ArticleCardComponent implements OnInit {
 }
 
 
-export class ArticleCard {
-  constructor(
-    public id:number,
-    private title: string,
-    private author: string,
-    private time: string,
-    private content: string,
-    private lable: string,
-    private checkNumber: number,
-    private replies: number,
-    private importance:number
-  ) { }
-}
