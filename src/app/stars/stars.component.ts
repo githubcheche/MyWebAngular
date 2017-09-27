@@ -7,15 +7,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StarsComponent implements OnInit {
 
-  @Input() starNum:number;
-  private stars:boolean[]=[];
+  @Input() starNum: number;
+  @Input() isReadOnly: boolean = true;
+  private stars: boolean[] = [];
+
 
   constructor() { }
 
   ngOnInit() {
-      for(let i=1;i<6;i++)
-        this.stars.push(i > this.starNum);
+    for (let i = 1; i < 6; i++)
+      this.stars[i - 1] = (i > this.starNum);
   }
 
+
+  onSelect(i: number) {
+    if (!this.isReadOnly) {
+      this.starNum = i + 1;
+      this.ngOnInit();
+    }
+  }
 }
 

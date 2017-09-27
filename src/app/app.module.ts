@@ -21,6 +21,8 @@ import { ArticleService } from './shared/article.service';
 import { RegisterAndLoginComponent } from './register-and-login/register-and-login.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { CommentComponent } from './comment/comment.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { LoginComponent } from './login/login.component';
     AuthorCardComponent,
     RegisterAndLoginComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CommentComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
