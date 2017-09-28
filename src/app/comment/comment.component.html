@@ -1,16 +1,52 @@
 <div class="row">
-  <div class="col-md-2 text-center">
+  <div class="col-sm-1 author_img">
     <img class="author-small-img" src="../../../favicon.ico" alt="">
   </div>
-  <div class="col-md-2 text-center">
-    <app-stars></app-stars>
+
+  <div class="col-sm-4">
+    <div class="row">
+      <a href="#">cheyy</a>
+    </div>
+    <div class="row">
+      <app-stars [starNum]="stars" [isReadOnly]="false" (emitterNum) = "setStarNum($event)"></app-stars>
+    </div>
+
   </div>
 </div>
 
-<div class="row">
-  <textarea class="form-control" rows="3"></textarea>
+
+<div class="user-comment">
+  <div class="row">
+    <textarea [(ngModel)]="content" class="form-control" rows="3" placeholder="请输入评论"></textarea>
+  </div>
+
+  <div class="row">
+    <button type="button" class="btn btn-info btn-block" (click)="onPushComment()">评论</button>
+  </div>
 </div>
 
-<div class="row">
-  <button type="button" class="btn btn-info btn-block pull-right">评论</button>
+
+
+
+<div class="comment-block" *ngFor="let item of commentList let i = index;">
+  <div class="row">
+    <div class="col-sm-1 author_img">
+      <img class="author-small-img" src="../../../favicon.ico" alt="">
+    </div>
+
+    <div class="col-sm-11">
+      <div class="row">
+        <a href="#">{{item.observer}}</a>
+        <app-stars [starNum]="stars"></app-stars>
+      </div>
+      <div class="row">
+        <p>#{{item.commentId}} · 评论于 {{item.time | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="comment-content row">
+    <p>{{item.content}}</p>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -22,7 +23,7 @@ import { RegisterAndLoginComponent } from './register-and-login/register-and-log
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CommentComponent } from './comment/comment.component';
-import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentService } from './shared/comment.service';
 
 
 @NgModule({
@@ -45,14 +46,17 @@ import { CommentListComponent } from './comment-list/comment-list.component';
     RegisterAndLoginComponent,
     RegisterComponent,
     LoginComponent,
-    CommentComponent,
-    CommentListComponent
+    CommentComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
-  providers: [ArticleService],
+  providers: [
+    ArticleService,
+    CommentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -33,8 +33,8 @@
         </li>
         <li [ngClass]="{'active': activeState==='about'}"><a routerLink="/about"  (click)="onClick('about')">关于</a></li>
       </ul>
-      <a href="#" [routerLink]="['/enter', 'register']" class="navbar-right register">注册</a>
-      <a href="#" [routerLink]="['/enter', 'login']" class="navbar-right login">登录</a>
+      <a href="#" [routerLink]="['/enter', 'register']" (click)="onClick('')" class="navbar-right register">注册</a>
+      <a href="#" [routerLink]="['/enter', 'login']" (click)="onClick('')" class="navbar-right login">登录</a>
 
     </div>
   </div>
