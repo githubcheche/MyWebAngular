@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CommentModule, CommentService } from '../shared/comment.service';
+import { CommentModule, CommentService } from '../../shared/comment.service';
 
 @Component({
   selector: 'app-comment',

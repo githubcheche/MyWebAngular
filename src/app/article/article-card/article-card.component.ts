@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ArticleCard } from '../shared/article.service';
+import { ArticleCard } from '../../shared/article.service';
 
 
 @Component({

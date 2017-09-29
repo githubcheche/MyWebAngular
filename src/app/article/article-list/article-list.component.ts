@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleCardComponent } from '../article-card/article-card.component';
-import { ArticleService, ArticleCard } from '../shared/article.service';
+import { ArticleService, ArticleCard } from '../../shared/article.service';
 
 @Component({
   selector: 'app-article-list',
