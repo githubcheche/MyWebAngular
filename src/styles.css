@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+
 body {
     padding-top: 50px;
     /* background-color: #0c328c!important; */
@@ -8,4 +10,11 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial,"Hiragino Sans GB","冬青黑","Microsoft YaHei","微软雅黑",SimSun,"宋体",Helvetica,Tahoma,Arial sans-serif;
+}
+
+
+
+a:link{text-decoration:none;   /* 指正常的未被访问过的链接*/
+}a:visited{text-decoration:none; /*指已经访问过的链接*/
+}a:hover{text-decoration:none;/*指鼠标在链接*/}a:active{text-decoration:none;/* 指正在点的链接*/ 
 }
