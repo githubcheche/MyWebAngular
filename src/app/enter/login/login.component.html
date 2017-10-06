@@ -1,13 +1,47 @@
-<div>
-  <div class="input-group col-sm-6 col-sm-offset-3">
-    <span class="input-group-addon" id="sizing-addon2">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
-    <input type="text" class="form-control" placeholder="用户名/邮箱" aria-describedby="sizing-addon2">
-  </div>
+<form [formGroup]="formModel" (submit)="onSubmit()" novalidate>
 
-  <div class="input-group col-sm-6 col-sm-offset-3">
-    <span class="input-group-addon" id="sizing-addon2">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
-    <input type="password" class="form-control" placeholder="请输入密码" aria-describedby="sizing-addon2">
-  </div>
+    <div class="input-group col-sm-6 col-sm-offset-3"
+         [class.has-error]="formModel.get('username').touched &&
+         (formModel.hasError('required','username') ||
+         formModel.hasError('minlength','username') )">
+        <span class="input-group-addon">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
+        <input type="text" class="form-control" placeholder="用户名/邮箱" formControlName="username"
+               aria-describedby="sizing-addon2">
+    </div>
 
-  <button type="button" class="btn btn-primary">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
-</div>
+    <div class="message">
+        <div class="alert alert-danger"
+             [hidden]="!formModel.hasError('required','username') || formModel.get('username').untouched">
+            请输入用户名
+        </div>
+        <div class="alert alert-danger"
+             [hidden]="!formModel.hasError('minlength','username') || formModel.get('username').untouched ">
+            用户名小于4个字符
+        </div>
+    </div>
+
+    <div class="input-group col-sm-6 col-sm-offset-3"
+         [class.has-error]="formModel.get('psw').touched &&
+         (formModel.hasError('required','psw') ||
+         formModel.hasError('minlength','psw') )">
+        <span class="input-group-addon">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+        <input type="password" class="form-control" placeholder="请输入密码" formControlName="psw"
+               aria-describedby="sizing-addon2">
+    </div>
+
+    <div class="message">
+        <div class="alert alert-danger"
+             [hidden]="!formModel.hasError('required','psw') || formModel.get('psw').untouched ">
+            请输入密码
+        </div>
+        <div class="alert alert-danger"
+             [hidden]="!formModel.hasError('minlength','psw') || formModel.get('psw').untouched">
+            密码小于6个字符
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+</form>
+
+
+
