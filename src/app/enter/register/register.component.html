@@ -1,19 +1,28 @@
-<div>
-  <div class="input-group col-sm-6 col-sm-offset-3">
-    <span class="input-group-addon" id="sizing-addon2">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
-    <input type="text" class="form-control" placeholder="至少4个字符" aria-describedby="sizing-addon2">
-  </div>
-  <div class="input-group col-sm-6 col-sm-offset-3">
-    <span class="input-group-addon" id="sizing-addon2">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
-    <input type="text" class="form-control" placeholder="请填真实是邮箱" aria-describedby="sizing-addon2">
-  </div>
-  <div class="input-group col-sm-6 col-sm-offset-3">
-    <span class="input-group-addon" id="sizing-addon2">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
-    <input type="password" class="form-control" placeholder="至少6个字符" aria-describedby="sizing-addon2">
-  </div>
-  <div class="input-group col-sm-6 col-sm-offset-3">
-    <span class="input-group-addon" id="sizing-addon2">确认密码：</span>
-    <input type="password" class="form-control" placeholder="请再次输入密码" aria-describedby="sizing-addon2">
-  </div>
-  <button type="button" class="btn btn-primary">注册</button>
-</div>
+<form [formGroup]="formModel" (submit)="onSubmit()" novalidate>
+
+    <div class="input-group col-sm-6 col-sm-offset-3">
+        <span class="input-group-addon">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
+        <input type="text" class="form-control" formControlName="username" placeholder="至少4个字符"
+               aria-describedby="sizing-addon2">
+    </div>
+
+    <div class="input-group col-sm-6 col-sm-offset-3">
+        <span class="input-group-addon">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
+        <input type="text" class="form-control" formControlName="email" placeholder="请填真实是邮箱"
+               aria-describedby="sizing-addon2">
+    </div>
+
+    <div formGroupName="passwordsGroup">
+        <div class="input-group col-sm-6 col-sm-offset-3">
+            <span class="input-group-addon">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+            <input type="password" class="form-control" formControlName="password" placeholder="至少6个字符"
+                   aria-describedby="sizing-addon2">
+        </div>
+        <div class="input-group col-sm-6 col-sm-offset-3">
+            <span class="input-group-addon">确认密码：</span>
+            <input type="password" class="form-control" formControlName="pconfirm" placeholder="请再次输入密码"
+                   aria-describedby="sizing-addon2">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">注册</button>
+</form>
