@@ -5,20 +5,10 @@
          (formModel.hasError('required','username') ||
          formModel.hasError('minlength','username') )">
         <span class="input-group-addon">账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</span>
-        <input type="text" class="form-control" placeholder="用户名/邮箱" formControlName="username"
+        <input type="text" id="username" class="form-control" placeholder="用户名/邮箱" formControlName="username"
                aria-describedby="sizing-addon2">
     </div>
 
-    <div class="message">
-        <div class="alert alert-danger"
-             [hidden]="!formModel.hasError('required','username') || formModel.get('username').untouched">
-            请输入用户名
-        </div>
-        <div class="alert alert-danger"
-             [hidden]="!formModel.hasError('minlength','username') || formModel.get('username').untouched ">
-            用户名小于4个字符
-        </div>
-    </div>
 
     <div class="input-group col-sm-6 col-sm-offset-3"
          [class.has-error]="formModel.get('psw').touched &&
@@ -29,14 +19,20 @@
                aria-describedby="sizing-addon2">
     </div>
 
-    <div class="message">
-        <div class="alert alert-danger"
-             [hidden]="!formModel.hasError('required','psw') || formModel.get('psw').untouched ">
-            请输入密码
+    <div class="row">
+        <div class="message col-sm-3 col-sm-offset-3">
+            <p class="alert alert-danger"
+               [hidden]="!formModel.hasError('required','username') || formModel.get('username').untouched">请输入用户名</p>
+            <p class="alert alert-danger"
+               [hidden]="!formModel.hasError('minlength','username') || formModel.get('username').untouched">
+                用户名小于4个字符</p>
         </div>
-        <div class="alert alert-danger"
-             [hidden]="!formModel.hasError('minlength','psw') || formModel.get('psw').untouched">
-            密码小于6个字符
+
+        <div class="message col-sm-3">
+            <p class="alert alert-danger"
+               [hidden]="!formModel.hasError('required','psw') || formModel.get('psw').untouched">请输入密码</p>
+            <p class="alert alert-danger"
+               [hidden]="!formModel.hasError('minlength','psw') || formModel.get('psw').untouched">密码小于6个字符</p>
         </div>
     </div>
 
