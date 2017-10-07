@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: "enter", component: RegisterAndLoginComponent,
     children: [
-      { path: 'register', component: RegisterComponent },
+      { path: 'register', component: RegisterComponent},
       { path: 'login', component: LoginComponent }
     ]
   },
@@ -24,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

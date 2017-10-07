@@ -5,6 +5,13 @@
     margin-bottom: 60px;
 }
 
-.input-group {
+.text-input {
     margin-top: 20px;
+}
+
+.message {
+    line-height: 34px;
+    color: red;
+    text-align: left;
+    padding: 0;
 }

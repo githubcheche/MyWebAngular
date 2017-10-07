@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {emailValidator, equalValidator} from '../../utils/validator/validators';
 
 @Component({
     selector: 'app-register',
@@ -13,15 +14,57 @@ export class RegisterComponent implements OnInit {
     constructor(fb: FormBuilder) {
         this.formModel = fb.group({
             username: ['', [Validators.required, Validators.minLength(4)]],
-            email: ['', [Validators.required, this.emailValidator]],
+            email: ['', [Validators.required, emailValidator]],
             passwordsGroup: fb.group({
                 password: ['', [Validators.required, Validators.minLength(6)]],
                 pconfirm: ['', [Validators.required, Validators.minLength(6)]]
-            }, {validator: this.equalValidator})
+            }, {validator: equalValidator})
         });
     }
 
     ngOnInit() {
+    }
+
+    get isUsrenameValid() {
+        if (this.formModel.get('username').untouched)
+            return '';
+        if (this.formModel.hasError('required', ['username'])) {
+            return '请输入账号';
+        } else if (this.formModel.hasError('minlength', ['username'])) {
+            return '账号至少4个字符';
+        }
+        return '';
+    }
+
+    get isEmailValid() {
+        if (this.formModel.get('email').untouched)
+            return '';
+        if (this.formModel.hasError('required', ['email'])) {
+            return '请输入邮箱';
+        } else if (this.formModel.hasError('email', ['email'])) {
+            return '邮箱不正确';
+        }
+        return '';
+    }
+
+    get isPasswordValid() {
+        if (this.formModel.get(['passwordsGroup', 'password']).untouched)
+            return '';
+        if (this.formModel.hasError('required', ['passwordsGroup', 'password'])) {
+            return '请输入密码';
+        } else if (this.formModel.hasError('minlength', ['passwordsGroup', 'password'])) {
+            return '密码长度必须大于等于6位';
+        }
+        return '';
+    }
+
+    get pconfirm() {
+        if (this.formModel.get(['passwordsGroup', 'pconfirm']).untouched)
+            return '';
+        if (this.formModel.hasError('equal', ['passwordsGroup'])) {
+            return '两次输入密码不相同';
+        }
+        return '';
     }
 
     onSubmit() {
@@ -35,31 +78,5 @@ export class RegisterComponent implements OnInit {
 
     }
 
-
-    /**
-     * 邮箱校验器
-     * @param {FormControl} control
-     * @returns {any}
-     */
-    emailValidator(control: FormControl): any {
-        const myreg = /^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/;
-        let vaild = myreg.test(control.value);
-        console.log('email valid is ' + vaild);
-        return vaild ? null : {email: true};
-    }
-
-    /**
-     * 密码确认校验
-     * @param {FormGroup} group
-     * @returns {any}
-     */
-    equalValidator(group: FormGroup): any {
-        let password: FormControl = group.get('password') as FormControl;
-        let pconfirm: FormControl = group.get('pconfirm') as FormControl;
-        let valid: boolean = (password.value === pconfirm.value);
-        console.log('password valid is ' + valid);
-
-        return valid ? null : {equal: true};
-    }
 
 }
