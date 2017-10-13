@@ -24,6 +24,8 @@ import { RegisterComponent } from './enter/register/register.component';
 import { LoginComponent } from './enter/login/login.component';
 import { CommentComponent } from './article/comment/comment.component';
 import { CommentService } from './shared/comment.service';
+import { HttpService } from './shared/http.service';
+import { HttpModule } from "@angular/http";
 
 
 @NgModule({
@@ -49,14 +51,16 @@ import { CommentService } from './shared/comment.service';
     CommentComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [
+    HttpService,
     ArticleService,
-    CommentService
+    CommentService,
   ],
   bootstrap: [AppComponent]
 })

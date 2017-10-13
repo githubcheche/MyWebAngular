@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class ArticleService {
 
-  constructor() { }
+  private articles:any;
+  constructor(private http:HttpService) { }
 
   getArticleList(): ArticleCard[] {
     let articleList: ArticleCard[] = [];
+
+    this.http.getArticles().subscribe((data)=> {
+      if (data.json().state) {
+        console.log(JSON.stringify(data));
+        
+      } else {
+        
+      }
+    });
+
+
     for(let i=0; i<8; i++) {
       articleList.push(new ArticleCard(i,
         "MySQL—Schema 与数据类型优化" + i,
