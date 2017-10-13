@@ -13,12 +13,15 @@ export class ArticleListComponent implements OnInit {
   private articleList: ArticleCard[] = [];
 
   constructor(
-    private articleService:ArticleService
+    private articleService: ArticleService
   ) { }
 
   ngOnInit() {
-   
-    this.articleList = this.articleService.getArticleList();
+
+    this.articleService.getArticleList((articles) => {
+        console.log("articles:: " + articles);
+        this.articleList = articles;
+    });
   }
 
 }

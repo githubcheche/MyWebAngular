@@ -14,14 +14,14 @@ export class HttpService {
 
   constructor(private http: Http) {
     // this.dataSource = this.http.get('url').map((res)=>res.json); 
-    this.getArticles().subscribe((data) => {
-      if (data.json().state) {
-        console.log(JSON.stringify(data));
+    // this.getArticles().subscribe((data) => {
+    //   if (data.json().state) {
+    //     console.log(JSON.stringify(data));
 
-      } else {
+    //   } else {
 
-      }
-    });
+    //   }
+    // });
   }
 
 
