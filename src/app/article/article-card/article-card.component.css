@@ -16,3 +16,9 @@
 app-starts{
     display: inline-block;
 }
+
+.label {
+    margin: 4px;
+    display: inline-block;
+
+}

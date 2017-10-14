@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './page/home/home.component';
+import { AboutComponent } from './page/about/about.component';
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './page/page-not-found/page-not-found.component';
 import { RegisterAndLoginComponent } from './enter/register-and-login/register-and-login.component';
 import { RegisterComponent } from './enter/register/register.component';
 import { LoginComponent } from './enter/login/login.component';

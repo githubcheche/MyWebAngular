@@ -1,29 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { ArticleCard } from '../../shared/article.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {Router} from '@angular/router';
+import {Article} from '../../model/article.model';
 
 
 @Component({
-  selector: 'app-article-card',
-  templateUrl: './article-card.component.html',
-  styleUrls: ['./article-card.component.css']
+    selector: 'app-article-card',
+    templateUrl: './article-card.component.html',
+    styleUrls: ['./article-card.component.css']
 })
 export class ArticleCardComponent implements OnInit {
 
-  @Input() article:ArticleCard;
+    @Input() article: Article;
 
-  constructor(
-     private router:Router 
-  ) { }
+    constructor(private router: Router) {
+    }
 
-  ngOnInit() {
+    ngOnInit() {
 
-    
-  }
 
-  goToAticleDetail() {
-    this.router.navigate(['/article', this.article.id]);
-  }
+    }
+
+    goToAticleDetail() {
+        this.router.navigate(['/article', this.article.id]);
+    }
 
 }
 

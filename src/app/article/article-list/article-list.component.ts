@@ -1,28 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { ArticleCardComponent } from '../article-card/article-card.component';
-import { ArticleService, ArticleCard } from '../../shared/article.service';
-import { HttpService } from '../../shared/http.service';
+import {Component, OnInit} from '@angular/core';
+import {ArticleService} from '../../shared/article.service';
+import {Article} from '../../model/article.model';
 
 @Component({
-  selector: 'app-article-list',
-  templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.css']
+    selector: 'app-article-list',
+    templateUrl: './article-list.component.html',
+    styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
 
-  private articleList: ArticleCard[] = [];
+    private articleList: Article[] = [];
 
-  constructor(
-    private articleService: ArticleService
-  ) { }
+    constructor(private articleService: ArticleService) {
+    }
 
-  ngOnInit() {
+    ngOnInit() {
 
-    this.articleService.getArticleList((articles) => {
-        console.log("articles:: " + articles);
-        this.articleList = articles;
-    });
-  }
+        this.articleService.getArticleList((articles) => {
+            console.log('articles:: ' + articles);
+            this.articleList = articles;
+        });
+    }
 
 }
 
