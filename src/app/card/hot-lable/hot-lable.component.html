@@ -3,10 +3,6 @@
       <h3 class="panel-title text-center">热门标签</h3>
     </div>
     <div class="panel-body">
-      <span class="label label-info">123</span>
-      <span class="label label-info">热门标签</span>
-      <span class="label label-info">热门标签</span>
-      <span class="label label-info">热门标签</span>
-      <span class="label label-info">热门标签</span>
+      <span class="label label-info" *ngFor="let tag of tags">{{tag.name}}</span>
     </div>
   </div>

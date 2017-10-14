@@ -2,6 +2,7 @@ import {User} from './../model/user.model';
 import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {Article} from '../model/article.model';
+import {Tag} from "../model/tag.model";
 
 /**
  * 文章api服务类
@@ -36,6 +37,34 @@ export class ArticleService {
         //     "MySQL", 12, 10, 4));
         // }
 
+    }
+
+    getArticle(id: number, callback): void {
+
+        this.http.getArticle(id).subscribe((data) => {
+            if (data.json().status) {
+                let article: Article = data.json().data;
+                callback(article);
+            }
+        });
+    }
+
+    getHotArticles(callback): void {
+        this.http.getHotArticles().subscribe((data) => {
+            if (data.json().status) {
+                let articleList: Article[] = data.json().data;
+                callback(articleList);
+            }
+        });
+    }
+
+    getHotTags(callback): void {
+        this.http.getHotTags().subscribe((data) => {
+            if (data.json().status) {
+                let tags: Tag[] = data.json().data;
+                callback(tags);
+            }
+        });
     }
 
 }

@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Tag} from "../../model/tag.model";
+import {ArticleService} from "../../shared/article.service";
 
 @Component({
-  selector: 'app-hot-lable',
-  templateUrl: './hot-lable.component.html',
-  styleUrls: ['./hot-lable.component.css']
+    selector: 'app-hot-lable',
+    templateUrl: './hot-lable.component.html',
+    styleUrls: ['./hot-lable.component.css']
 })
 export class HotLableComponent implements OnInit {
 
-  constructor() { }
+    private tags: Tag[];
 
-  ngOnInit() {
-  }
+    constructor(private articleService: ArticleService) {
+    }
+
+    ngOnInit() {
+        this.articleService.getHotTags((tags) => {
+            this.tags = tags;
+        });
+    }
 
 }

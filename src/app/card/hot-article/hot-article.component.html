@@ -4,11 +4,7 @@
   </div>
   <div class="panel-body">
     <ul>
-      <li><a>•&nbsp;&nbsp;&nbsp;&nbsp;关于我的一些看法</a></li>
-      <li><a>•&nbsp;&nbsp;&nbsp;&nbsp;关于我的一些看法</a></li>
-      <li><a>•&nbsp;&nbsp;&nbsp;&nbsp;关于我的一些看法</a></li>
-      <li><a>•&nbsp;&nbsp;&nbsp;&nbsp;关于我的一些看法</a></li>
-      <li><a>•&nbsp;&nbsp;&nbsp;&nbsp;关于我的一些看法</a></li>
+      <li *ngFor="let article of articleList"><a>•&nbsp;&nbsp;&nbsp;&nbsp;{{article.title}}</a></li>
     </ul>
   </div>
 </div>

@@ -9,7 +9,7 @@ import {Article} from '../../model/article.model';
 })
 export class ArticleListComponent implements OnInit {
 
-    private articleList: Article[] = [];
+    private articleList: Article[];
 
     constructor(private articleService: ArticleService) {
     }
