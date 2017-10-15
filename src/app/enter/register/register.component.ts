@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {emailValidator, equalValidator} from '../../utils/validator/validators';
+import {UserService} from "../../shared/user.service";
 
 @Component({
     selector: 'app-register',
@@ -11,7 +12,8 @@ export class RegisterComponent implements OnInit {
 
     private formModel: FormGroup;
 
-    constructor(fb: FormBuilder) {
+    constructor(private fb: FormBuilder,
+                private userService: UserService) {
         this.formModel = fb.group({
             username: ['', [Validators.required, Validators.minLength(4)]],
             email: ['', [Validators.required, emailValidator]],
@@ -74,6 +76,15 @@ export class RegisterComponent implements OnInit {
 
         if (this.formModel.valid) {
             console.log(this.formModel.value);
+            let param = {
+                name: this.formModel.value.username,
+                email: this.formModel.value.email,
+                password: this.formModel.get(['passwordsGroup', 'password']).value,
+                password_confirmation: this.formModel.get(['passwordsGroup', 'pconfirm']).value,
+            };
+            this.userService.postRegister(param, (message) => {
+                console.log(message);
+            });
         }
 
     }

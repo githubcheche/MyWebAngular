@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from "../../shared/user.service";
 
 @Component({
     selector: 'app-login',
@@ -9,7 +10,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
     private formModel: FormGroup;
 
-    constructor(fb: FormBuilder) {
+    constructor(private fb: FormBuilder,
+                private userService: UserService) {
         this.formModel = fb.group({
             username: ['', [Validators.required, Validators.minLength(4)]],
             psw: ['', [Validators.required, Validators.minLength(6)]]
@@ -26,6 +28,14 @@ export class LoginComponent implements OnInit {
 
         if (this.formModel.valid) {
             console.log(this.formModel.value);
+
+            let param = {
+                login: this.formModel.value.username,
+                password: this.formModel.value.psw,
+            };
+            this.userService.postLogin(param, (message) => {
+                console.log(message);
+            });
         }
 
     }

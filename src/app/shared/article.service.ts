@@ -1,8 +1,7 @@
-import {User} from './../model/user.model';
 import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {Article} from '../model/article.model';
-import {Tag} from "../model/tag.model";
+import {Tag} from '../model/tag.model';
 
 /**
  * 文章api服务类

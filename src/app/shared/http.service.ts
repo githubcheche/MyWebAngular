@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, RequestOptions} from '@angular/http';
+import {Http, RequestOptions, Headers} from '@angular/http';
 import {Observable} from 'rxjs/RX';
 import 'rxjs/RX';
 
@@ -12,6 +12,8 @@ export class HttpService {
     opts: RequestOptions = new RequestOptions();
 
     constructor(private http: Http) {
+        this.headers.append('Content-Type', 'application/json');
+        this.opts.headers = this.headers;
     }
 
     getArticles(): Observable<any> {
@@ -28,6 +30,14 @@ export class HttpService {
 
     getHotTags(): Observable<any> {
         return this.http.get(API_ROOT + 'hot_tags', this.opts);
+    }
+
+    postRegister(body: any): Observable<any> {
+        return this.http.post('http://127.0.0.1:8000/api/v1/' + 'user/register', body, this.opts);
+    }
+
+    postLogin(body: any): Observable<any> {
+        return this.http.post('http://127.0.0.1:8000/api/v1/' + 'user/login', body, this.opts);
     }
 }
 
