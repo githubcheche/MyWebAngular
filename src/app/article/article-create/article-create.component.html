@@ -6,18 +6,18 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control" formControlName="title" id="title" placeholder="至少4个字符">
             </div>
-            <div class="message col-sm-3">123</div>
+            <div class="message col-sm-3">{{isTitleValid}}</div>
         </div>
 
         <div class="form-group">
             <label for="category" class="col-sm-2 control-label col-sm-offset-2">文章类别：</label>
             <div class="col-sm-5">
-                <select id="category" class="form-control" formControlName="category"  placeholder="请选择">
+                <select id="category" class="form-control" formControlName="category" placeholder="请选择">
                     <option>生活</option>
                     <option>编成</option>
                 </select>
             </div>
-            <div class="message col-sm-3">123</div>
+            <div class="message col-sm-3">{{formModel.get('category').value}}</div>
         </div>
 
         <div class="form-group">
@@ -25,7 +25,7 @@
             <div class="col-sm-5">
                 <input type="text" class="form-control" formControlName="tags" id="tags" placeholder="标签之间用英文逗标间隔">
             </div>
-            <div class="message col-sm-3">123</div>
+            <div class="message col-sm-3">{{isTagsValid}}</div>
         </div>
 
         <div class="form-group">
@@ -33,18 +33,17 @@
             <div class="col-sm-5">
                 <textarea id="body" class="form-control" rows="18" formControlName="body" placeholder="请输入"></textarea>
             </div>
-            <div class="message col-sm-3">123</div>
+            <div class="message col-sm-3">{{isBodyValid}}</div>
         </div>
 
         <div class="form-group">
             <label for="closeComment" class="col-sm-2 control-label col-sm-offset-2">是否允许评论：</label>
             <div class="col-sm-5">
-                <select id="closeComment" class="form-control" formControlName="closeComment"  placeholder="请选择">
-                    <option>是</option>
-                    <option>否</option>
+                <select id="closeComment" class="form-control" formControlName="closeComment" placeholder="请选择">
+                    <option *ngFor="let option of isHidden" [value]="option.value">{{option.label}}</option>
                 </select>
             </div>
-            <div class="message col-sm-3">123</div>
+            <div class="message col-sm-3">{{formModel.get('closeComment').value}}</div>
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="!formModel.valid">提交</button>

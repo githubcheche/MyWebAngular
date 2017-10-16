@@ -21,7 +21,7 @@ export class UserService {
     postLogin(body: any, callback): void {
         this.http.postLogin(body).subscribe((data) => {
             if (data.json().status) {
-                callback(data.json().message, data.json().data[0]);
+                callback(data.json().message, data.json().data);
             }
         });
     }
