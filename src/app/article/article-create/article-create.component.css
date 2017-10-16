@@ -1,0 +1,17 @@
+.creat-article-contant {
+    margin-top: 4%;
+}
+
+.btn {
+    display: inline-block;
+    width: 50%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.message {
+    line-height: 34px;
+    color: red;
+    text-align: left;
+    padding: 0;
+}

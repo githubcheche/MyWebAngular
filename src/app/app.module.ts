@@ -27,6 +27,7 @@ import {CommentService} from './shared/comment.service';
 import {HttpService} from './shared/http.service';
 import {HttpModule} from '@angular/http';
 import {UserService} from './shared/user.service';
+import { ArticleCreateComponent } from './article/article-create/article-create.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {UserService} from './shared/user.service';
         RegisterAndLoginComponent,
         RegisterComponent,
         LoginComponent,
-        CommentComponent
+        CommentComponent,
+        ArticleCreateComponent
     ],
     imports: [
         HttpModule,

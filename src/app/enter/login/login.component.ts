@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../shared/user.service";
+import {User} from "../../model/user.model";
 
 @Component({
     selector: 'app-login',
@@ -33,8 +34,11 @@ export class LoginComponent implements OnInit {
                 login: this.formModel.value.username,
                 password: this.formModel.value.psw,
             };
-            this.userService.postLogin(param, (message) => {
+            this.userService.postLogin(param, (message, user) => {
                 console.log(message);
+                if (message === '登录成功') {
+                    this.userService.setUser(user as User);
+                }
             });
         }
 
