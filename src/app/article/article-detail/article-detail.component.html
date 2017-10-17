@@ -1,47 +1,45 @@
-<div *ngIf="article!=null" class="container">
-  <div class="col-md-8">
-    <h3>{{article.title}}</h3>
+<div class="container">
+    <div class="col-md-8">
+        <h3 *ngIf="article!=null">{{article.title}}</h3>
 
-    <div class="row">
-      <div class="col-md-2 text-center">
-        <img class="author-small-img" src="../../../favicon.ico" alt="">
-      </div>
-
-      <div class="author-text-info col-md-6">
         <div class="row">
-          <a href="" class="author-label">作者</a>
-          <span id="name">{{article.user.name}}</span>
+            <div class="col-md-2 text-center">
+                <img class="author-small-img" src="../../../favicon.ico" alt="">
+            </div>
+
+            <div *ngIf="article != null" class="author-text-info col-md-6">
+                <div class="row">
+                    <a href="" class="author-label">作者</a>
+                    <span id="name">{{article.user.name}}</span>
+                </div>
+
+                <div class="row article-message-info">
+                    <span>创作与</span>
+                    <span>{{article.created_at}}</span>
+                    <span>&nbsp;&nbsp;阅读</span>
+                    <span>{{article.view_count}}</span>
+                    <span>&nbsp;&nbsp;评论</span>
+                    <span>{{article.comments_count}}</span>
+                    <span>&nbsp;&nbsp;评分</span>
+                    <span>{{article.id}}星</span>
+                </div>
+            </div>
         </div>
 
-        <div class="row article-message-info">
-          <span>创作与</span>
-          <span>{{article.created_at}}</span>
-          <span>&nbsp;&nbsp;阅读</span>
-          <span>{{article.view_count}}</span>
-          <span>&nbsp;&nbsp;评论</span>
-          <span>{{article.comments_count}}</span>
-          <span>&nbsp;&nbsp;评分</span>
-          <span>{{article.id}}星</span>
+
+        <div class="article-text" id="article">
+            <!--<div [innerHTML]="article.body"></div>-->
         </div>
-      </div>
+
+        <app-comment [articleId]="id"></app-comment>
+
+
     </div>
 
 
-    <div *ngIf="article!=null" class="article-text" id="article1">
-      <!--<div [innerHTML]="article.body"></div>-->
+    <div class="col-md-4">
+        <app-author-card></app-author-card>
+        <app-hot-article></app-hot-article>
+        <app-hot-lable></app-hot-lable>
     </div>
-
-    <app-comment [articleId]="id"></app-comment>
-
-
-  </div>
-
-
-
-
-  <div class="col-md-4">
-    <app-author-card></app-author-card>
-    <app-hot-article></app-hot-article>
-    <app-hot-lable></app-hot-lable>
-  </div>
 </div>

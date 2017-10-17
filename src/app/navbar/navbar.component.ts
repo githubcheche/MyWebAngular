@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
 
     onClick(eventName: string) {
         console.log(eventName);
-
         this.activeState = eventName;
     }
 
@@ -42,7 +41,6 @@ export class NavbarComponent implements OnInit {
 
     onCreateArticle() {
         this.getToken();
-        console.log(this.token);
         if (this.token != null) {
             this.router.navigate(['/article', 'create']);
         } else {
