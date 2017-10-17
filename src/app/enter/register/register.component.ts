@@ -84,6 +84,7 @@ export class RegisterComponent implements OnInit {
             };
             this.userService.postRegister(param, (message) => {
                 console.log(message);
+                // this.router.navigate(['/enter', 'login']);
             });
         }
 

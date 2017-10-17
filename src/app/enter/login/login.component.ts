@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../shared/user.service";
 import {User} from "../../model/user.model";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
     private formModel: FormGroup;
 
     constructor(private fb: FormBuilder,
+                private router: Router,
                 private userService: UserService) {
         this.formModel = fb.group({
             username: ['', [Validators.required, Validators.minLength(4)]],
@@ -37,7 +39,10 @@ export class LoginComponent implements OnInit {
             this.userService.postLogin(param, (message, user) => {
                 console.log(message);
                 if (message === '登录成功') {
-                    this.userService.setUser(user as User);
+                    // this.userService.setUser(user as User);
+                    this.userService.saveUserToken(user.jwt_token.access_token);
+                    // history.back();
+                    this.router.navigate(['/home']);
                 }
             });
         }

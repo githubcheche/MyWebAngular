@@ -28,7 +28,7 @@
 
 
     <div class="article-text">
-      <p>{{article.body}}</p>
+      <div [innerHTML]="article.body"></div>
     </div>
 
     <app-comment [articleId]="id"></app-comment>

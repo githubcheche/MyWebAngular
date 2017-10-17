@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../shared/user.service';
+import {ArticleService} from '../../shared/article.service';
+import {Category} from '../../model/category.model';
+import {Router} from '@angular/router';
+
+import * as WangEditor from '../../../assets/wangEditor_3.0.10/wangEditor.min.js';
 
 @Component({
     selector: 'app-article-create',
@@ -12,24 +15,24 @@ export class ArticleCreateComponent implements OnInit {
 
     private userId: number;
     private formModel: FormGroup;
-    private isHidden = [
-        { value: 'F', label: '是' },
-        { value: 'T', label: '否' }
+    public isHidden = [
+        {value: 'F', label: '是'},
+        {value: 'T', label: '否'}
     ];
+    public categories: Category[];
+    private editor: any;
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
-                private fb: FormBuilder,
-                private userService: UserService) {
+    constructor(private fb: FormBuilder,
+                private router: Router,
+                private articleService: ArticleService,
+                private el: ElementRef) {
 
         this.formModel = fb.group({
             title: ['', [Validators.required, Validators.minLength(4)]],
-            category: ['生活', [Validators.required]],
-            body: ['', [Validators.required, Validators.minLength(10)]],
+            category: [1, [Validators.required]],
             tags: ['', [Validators.required, Validators.minLength(1)]],
             closeComment: [this.isHidden[0].value, [Validators.required]]
         });
-
     }
 
     ngOnInit() {
@@ -40,6 +43,16 @@ export class ArticleCreateComponent implements OnInit {
         //     this.userId = +userId;
         //     console.log(this.userId);
         // });
+        // 获取所有文章类别
+        this.articleService.getCategories((categories) => {
+            console.log(categories[0]);
+            this.categories = categories;
+        });
+
+        let editordom = this.el.nativeElement.querySelector('#editorElem')
+        this.editor = new WangEditor(editordom)
+        this.editor.customConfig.uploadImgShowBase64 = true
+        this.editor.create();
     }
 
 
@@ -47,15 +60,30 @@ export class ArticleCreateComponent implements OnInit {
         return this.isValid('title');
     }
 
-    get isBodyValid() {
-        return this.isValid('body');
-    }
-
     get isTagsValid() {
         return this.isValid('tags');
     }
 
     onSubmit() {
+        const isValid: boolean = this.formModel.get('title').valid;
+        const errors: any = this.formModel.get('title').errors;
+        // console.log(JSON.stringify(errors));
+
+        if (this.formModel.valid) {
+            console.log(this.formModel.value);
+            let param = {
+                title: this.formModel.value.title,
+                // body: this.formModel.value.body,
+                body: this.editor.txt.html(),
+                tag: this.formModel.value.tags,
+                category: this.formModel.get('category').value,
+                is_hidden: this.formModel.get('closeComment').value,
+            };
+            this.articleService.postCreateArticle(param, (message) => {
+                console.log(message);
+                this.router.navigate(['/home']);
+            });
+        }
 
     }
 
@@ -67,8 +95,6 @@ export class ArticleCreateComponent implements OnInit {
             switch (path) {
                 case 'title':
                     return '请输入标题';
-                case 'body':
-                    return '请输入内容';
                 case 'tags':
                     return '请输入标签';
             }
@@ -76,8 +102,6 @@ export class ArticleCreateComponent implements OnInit {
             switch (path) {
                 case 'title':
                     return '标题至少4个字符';
-                case 'body':
-                    return '标题至少10个字符';
                 case 'tags':
                     return '标题至少1个字符';
             }

@@ -36,9 +36,10 @@
                 <li [ngClass]="{'active': activeState==='about'}"><a routerLink="/about"
                                                                      (click)="onClick('about')">关于</a></li>
             </ul>
-            <a href="#" [routerLink]="['/enter', 'register']" (click)="onClick('')" class="navbar-right register">注册</a>
-            <a href="#" [routerLink]="['/enter', 'login']" (click)="onClick('')" class="navbar-right login">登录</a>
-            <a (click)="onCreateArticle()" class="navbar-right login">写文章</a>
+            <a href="#" *ngIf="hasToken == null" [routerLink]="['/enter', 'register']" (click)="onClick('')" class="navbar-right register">注册</a>
+            <a href="#" *ngIf="hasToken == null" [routerLink]="['/enter', 'login']" (click)="onClick('')" class="navbar-right login">登录</a>
+            <a *ngIf="hasToken != null" (click)="onLogout()" class="navbar-right login">退出</a>
+            <a *ngIf="hasToken != null" (click)="onCreateArticle()" class="navbar-right login">写文章</a>
 
         </div>
     </div>

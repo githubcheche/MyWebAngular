@@ -24,7 +24,7 @@ export class ArticleDetailComponent implements OnInit {
         this.route.paramMap
             .switchMap((params: ParamMap) =>
                 params.get('id')).subscribe((id: string) => {
-            this.id = +id;
+            this.id = 12;
 
             this.articleService.getArticle(this.id, (article) => {
                 this.article = article;

@@ -3,13 +3,18 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 import {Observable} from 'rxjs/RX';
 import 'rxjs/RX';
 
-export const API_ROOT = 'http://api.icheyy.top/api/v1/';
+export const USER_TOKEN = 'user_token';
+// export const API_ROOT = 'http://api.icheyy.top/api/v1/';
+export const API_ROOT = 'http://127.0.0.1:8000/api/v1/';
+
+export const TEST_ROOT = 'http://127.0.0.1:8000/api/v1/';
 
 @Injectable()
 export class HttpService {
 
     headers: Headers = new Headers();
     opts: RequestOptions = new RequestOptions();
+    private localStorage = window.localStorage;
 
     constructor(private http: Http) {
         this.headers.append('Content-Type', 'application/json');
@@ -28,16 +33,43 @@ export class HttpService {
         return this.http.get(API_ROOT + 'hot_articles', this.opts);
     }
 
+    getTags(): Observable<any> {
+        return this.http.get(TEST_ROOT + 'tags', this.opts);
+    }
+
     getHotTags(): Observable<any> {
         return this.http.get(API_ROOT + 'hot_tags', this.opts);
     }
 
+    getCategories(): Observable<any> {
+        return this.http.get(TEST_ROOT + 'categories', this.opts);
+    }
+
     postRegister(body: any): Observable<any> {
-        return this.http.post('http://127.0.0.1:8000/api/v1/' + 'user/register', body, this.opts);
+        return this.http.post(TEST_ROOT + 'user/register', body, this.opts);
     }
 
     postLogin(body: any): Observable<any> {
-        return this.http.post('http://127.0.0.1:8000/api/v1/' + 'user/login', body, this.opts);
+        return this.http.post(TEST_ROOT + 'user/login', body, this.opts);
+    }
+
+    getLogout(): Observable<any> {
+        const token: string = this.localStorage.getItem(USER_TOKEN);
+        if (token == null || (token.trim().length < 1)) {
+            return null;
+        }
+
+        this.opts.headers.set('Authorization', `Bearer ${token}`);
+        return this.http.get(TEST_ROOT + 'user/logout', this.opts);
+    }
+
+    postCreateArticle(body: any): Observable<any> {
+        const token: string = this.localStorage.getItem(USER_TOKEN);
+        if (token == null || (token.trim().length < 1)) {
+            return null;
+        }
+        this.opts.headers.set('Authorization', `Bearer ${token}`);
+        return this.http.post(TEST_ROOT + 'articles', body, this.opts);
     }
 }
 

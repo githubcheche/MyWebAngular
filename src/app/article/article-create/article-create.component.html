@@ -11,10 +11,9 @@
 
         <div class="form-group">
             <label for="category" class="col-sm-2 control-label col-sm-offset-2">文章类别：</label>
-            <div class="col-sm-5">
+            <div class="col-sm-5" *ngIf="categories">
                 <select id="category" class="form-control" formControlName="category" placeholder="请选择">
-                    <option>生活</option>
-                    <option>编成</option>
+                    <option  *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
                 </select>
             </div>
             <div class="message col-sm-3">{{formModel.get('category').value}}</div>
@@ -28,13 +27,23 @@
             <div class="message col-sm-3">{{isTagsValid}}</div>
         </div>
 
+        <!--<div class="form-group">-->
+            <!--<label for="body" class="col-sm-2 control-label col-sm-offset-2">内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容：</label>-->
+            <!--<div class="col-sm-5">-->
+                <!--<textarea id="body" class="form-control" rows="18" formControlName="body" placeholder="请输入"></textarea>-->
+            <!--</div>-->
+            <!--<div class="message col-sm-3">{{isBodyValid}}</div>-->
+        <!--</div>-->
+
         <div class="form-group">
-            <label for="body" class="col-sm-2 control-label col-sm-offset-2">内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容：</label>
+            <label for="editorElem" class="col-sm-2 control-label col-sm-offset-2">内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容：</label>
             <div class="col-sm-5">
-                <textarea id="body" class="form-control" rows="18" formControlName="body" placeholder="请输入"></textarea>
+                <div id="editorElem"><p>请输入内容</p></div>
             </div>
-            <div class="message col-sm-3">{{isBodyValid}}</div>
+            <div class="message col-sm-3"></div>
         </div>
+
+
 
         <div class="form-group">
             <label for="closeComment" class="col-sm-2 control-label col-sm-offset-2">是否允许评论：</label>

@@ -2,10 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {User} from '../model/user.model';
 
+
+const USER_TOKEN = 'user_token';
+
 @Injectable()
 export class UserService {
 
-    private user;
+    private localStorage = window.localStorage;
 
     constructor(private http: HttpService) {
     }
@@ -26,12 +29,25 @@ export class UserService {
         });
     }
 
-    setUser(user: User) {
-        console.log('set user is ' + user.name);
-        this.user = user;
+    getLogout(callback): void {
+        this.http.getLogout().subscribe((data) => {
+            if (data.json().status) {
+                callback(data.json().message);
+                this.clearUserToken();
+            }
+        });
     }
 
-    getUser(): User {
-        return this.user;
+    saveUserToken(token: string) {
+        this.localStorage.setItem(USER_TOKEN, token);
     }
+
+    clearUserToken() {
+        this.localStorage.removeItem(USER_TOKEN);
+    }
+
+    getUserToken(): string {
+        return this.localStorage.getItem(USER_TOKEN);
+    }
+
 }

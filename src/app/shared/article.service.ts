@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpService} from './http.service';
 import {Article} from '../model/article.model';
 import {Tag} from '../model/tag.model';
+import {Category} from '../model/category.model';
 
 /**
  * 文章api服务类
@@ -62,6 +63,32 @@ export class ArticleService {
             if (data.json().status) {
                 let tags: Tag[] = data.json().data;
                 callback(tags);
+            }
+        });
+    }
+
+    getTags(callback): void {
+        this.http.getTags().subscribe((data) => {
+            if (data.json().status) {
+                let tags: Tag[] = data.json().data;
+                callback(tags);
+            }
+        });
+    }
+
+    getCategories(callback): void {
+        this.http.getCategories().subscribe((data) => {
+            if (data.json().status) {
+                let categories: Category[] = data.json().data;
+                callback(categories);
+            }
+        });
+    }
+
+    postCreateArticle(body: any, callback): void {
+        this.http.postCreateArticle(body).subscribe((data) => {
+            if (data.json().status) {
+                callback(data.json().message, data.json().data);
             }
         });
     }
