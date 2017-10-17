@@ -27,8 +27,8 @@
     </div>
 
 
-    <div class="article-text">
-      <div [innerHTML]="article.body"></div>
+    <div *ngIf="article!=null" class="article-text" id="article1">
+      <!--<div [innerHTML]="article.body"></div>-->
     </div>
 
     <app-comment [articleId]="id"></app-comment>
