@@ -29,9 +29,11 @@ export class UserService {
             console.log(data.json().message, data.json().status);
             callback(data.json().message);
             User.clearUserToken();
+        }, (error) => {
+            callback(error.json().message);
+            User.clearUserToken();
         });
     }
-
 
 
 }
