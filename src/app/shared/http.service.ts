@@ -5,8 +5,8 @@ import 'rxjs/RX';
 import {User} from "../model/user.model";
 
 
-// export const API_ROOT = 'http://api.icheyy.top/api/v1/';
-export const API_ROOT = 'http://127.0.0.1:8000/api/v1/';
+export const API_ROOT = 'http://api.icheyy.top/api/v1/';
+// export const API_ROOT = 'http://127.0.0.1:8000/api/v1/';
 
 export const TEST_ROOT = 'http://127.0.0.1:8000/api/v1/';
 
@@ -35,7 +35,7 @@ export class HttpService {
     }
 
     getTags(): Observable<any> {
-        return this.http.get(TEST_ROOT + 'tags', this.opts);
+        return this.http.get(API_ROOT + 'tags', this.opts);
     }
 
     getHotTags(): Observable<any> {
@@ -43,15 +43,15 @@ export class HttpService {
     }
 
     getCategories(): Observable<any> {
-        return this.http.get(TEST_ROOT + 'categories', this.opts);
+        return this.http.get(API_ROOT + 'categories', this.opts);
     }
 
     postRegister(body: any): Observable<any> {
-        return this.http.post(TEST_ROOT + 'user/register', body, this.opts);
+        return this.http.post(API_ROOT + 'user/register', body, this.opts);
     }
 
     postLogin(body: any): Observable<any> {
-        return this.http.post(TEST_ROOT + 'user/login', body, this.opts);
+        return this.http.post(API_ROOT + 'user/login', body, this.opts);
     }
 
     getLogout(): Observable<any> {
@@ -61,7 +61,7 @@ export class HttpService {
         }
 
         this.opts.headers.set('Authorization', `Bearer ${token}`);
-        return this.http.get(TEST_ROOT + 'user/logout', this.opts);
+        return this.http.get(API_ROOT + 'user/logout', this.opts);
     }
 
     postCreateArticle(body: any): Observable<any> {
@@ -70,7 +70,7 @@ export class HttpService {
             return null;
         }
         this.opts.headers.set('Authorization', `Bearer ${token}`);
-        return this.http.post(TEST_ROOT + 'articles', body, this.opts);
+        return this.http.post(API_ROOT + 'articles', body, this.opts);
     }
 
 
