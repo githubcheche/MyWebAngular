@@ -2,6 +2,7 @@
     margin-left: 10px;
     color: #bce8f1;
 }
+
 .article-info {
     padding-top: 5px;
     font-size: 13px;
@@ -9,14 +10,25 @@
 }
 
 .article-content {
-    line-height: 25px;
-} 
-app-starts{
+    line-height: 1.4em;
+
+    /*text-overflow: ellipsis;*/
+    overflow: hidden;
+    /*white-space: nowrap;*/
+    width: 100%;
+    height: 100px;
+}
+
+app-starts {
     display: inline-block;
 }
 
 .label {
     margin: 4px;
     display: inline-block;
+
+}
+
+.branch-name {
 
 }

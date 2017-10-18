@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
                 console.log(message);
                 if (message === '登录成功') {
                     // this.userService.setUser(user as User);
-                    this.userService.saveUserToken(user.jwt_token.access_token);
+                    User.saveUserToken(user.jwt_token.access_token);
                     // history.back();
                     this.router.navigate(['/home']);
                 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../shared/user.service';
 import {Router} from '@angular/router';
+import {User} from "../model/user.model";
 
 @Component({
     selector: 'app-navbar',
@@ -49,7 +50,7 @@ export class NavbarComponent implements OnInit {
     }
 
     getToken() {
-        const token = this.userService.getUserToken();
+        const token = User.getUserToken();
         if (token != null && (token.trim().length > 1)) {
             this.token = token.trim();
         }

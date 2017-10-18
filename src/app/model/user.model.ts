@@ -1,6 +1,10 @@
 import {JwtToken} from './jwtToken.model';
 
+const USER_TOKEN = 'user_token';
+
 export class User {
+
+    private static  localStorage = window.localStorage;
 
     public id: number;
     public name: string;
@@ -22,4 +26,16 @@ export class User {
     public updated_at: string;
     public deleted_at: string;
     public jwt_token: JwtToken;
+
+    public static saveUserToken(token: string) {
+        this.localStorage.setItem(USER_TOKEN, token);
+    }
+
+    public static clearUserToken() {
+        this.localStorage.removeItem(USER_TOKEN);
+    }
+
+    public static getUserToken(): string {
+        return this.localStorage.getItem(USER_TOKEN);
+    }
 }

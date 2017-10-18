@@ -53,6 +53,7 @@ export class ArticleCreateComponent implements OnInit {
         this.editor = new WangEditor(editordom)
         this.editor.customConfig.uploadImgShowBase64 = true
         this.editor.create();
+
     }
 
 

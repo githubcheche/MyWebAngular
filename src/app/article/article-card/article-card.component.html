@@ -1,12 +1,13 @@
 <a href="#" [routerLink]="['/article', article.id]"><h3>{{article.title}}</h3></a>
 <p class="article-info">由 {{article.user.name}} 发表于 {{article.created_at}}</p>
+
 <div class="article-content" [innerHTML]="article.body"></div>
 
-  <span class="label label-info" *ngFor="let tag of article.tags">{{tag.name}}</span>
-  <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-  <span>{{article.view_count}}</span>
-  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-  <span>{{article.comments_count}}</span>
-  <app-stars [starNum]="article.id"></app-stars>
+<span class="label label-info" *ngFor="let tag of article.tags">{{tag.name}}</span>
+<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+<span>{{article.view_count}}</span>
+<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+<span>{{article.comments_count}}</span>
+<app-stars [starNum]="article.id"></app-stars>
 
 <hr>

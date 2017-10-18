@@ -3,6 +3,7 @@ import {HttpService} from './http.service';
 import {Article} from '../model/article.model';
 import {Tag} from '../model/tag.model';
 import {Category} from '../model/category.model';
+import {User} from "../model/user.model";
 
 /**
  * 文章api服务类
@@ -87,9 +88,10 @@ export class ArticleService {
 
     postCreateArticle(body: any, callback): void {
         this.http.postCreateArticle(body).subscribe((data) => {
-            if (data.json().status) {
-                callback(data.json().message, data.json().data);
+            if (!data.json().status) {
+                User.clearUserToken();
             }
+            callback(data.json().message, data.json().data);
         });
     }
 

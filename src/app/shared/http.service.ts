@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import {Observable} from 'rxjs/RX';
 import 'rxjs/RX';
+import {User} from "../model/user.model";
 
-export const USER_TOKEN = 'user_token';
+
 // export const API_ROOT = 'http://api.icheyy.top/api/v1/';
 export const API_ROOT = 'http://127.0.0.1:8000/api/v1/';
 
@@ -54,7 +55,7 @@ export class HttpService {
     }
 
     getLogout(): Observable<any> {
-        const token: string = this.localStorage.getItem(USER_TOKEN);
+        const token: string = User.getUserToken();
         if (token == null || (token.trim().length < 1)) {
             return null;
         }
@@ -64,12 +65,17 @@ export class HttpService {
     }
 
     postCreateArticle(body: any): Observable<any> {
-        const token: string = this.localStorage.getItem(USER_TOKEN);
+        const token: string = User.getUserToken();
         if (token == null || (token.trim().length < 1)) {
             return null;
         }
         this.opts.headers.set('Authorization', `Bearer ${token}`);
         return this.http.post(TEST_ROOT + 'articles', body, this.opts);
     }
+
+
+
+
+
 }
 
