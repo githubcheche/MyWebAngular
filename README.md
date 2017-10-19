@@ -1,28 +1,39 @@
-# MyWeb
+# icheyy博客前台页面Angular4项目（停止）
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
+> 前后端分离，通过 token 验证用户信息，调取后端 API。
 
-## Development server
+## 前言
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+此项目是用Angular4框架开发的项目，前后端分离，后端使用Laravel5.5开发API，由于现阶段Angular4普及不广，生态圈不完善，在2017-10-19后转战VUE框架，此项目将在近日停止维护，等Angular4生态圈完善后重新开启。
 
-## Code scaffolding
+## 技术栈
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+npm 3.10.10 + node.js 6.10 + Angular4 + Angular CLI1.4.2 + TypeScript
 
-## Build
+##安装
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+~~~
+> git clone
 
-## Running unit tests
+> npm i
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> ng serve -o
+~~~
 
-## Running end-to-end tests
+## 部署
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+~~~
+ng build --env=prod
+~~~
 
-## Further help
+将dist文件夹下的文件部署到服务器上即可。
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## 项目布局
+
+## 联系我
+
+如有任何疑问或者问题，可随时联系我`woshicheyy@sina.com`
+
+
