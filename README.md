@@ -15,6 +15,8 @@ npm 3.10.10 + node.js 6.10 + Angular4 + Angular CLI1.4.2 + TypeScript
 ~~~
 > git clone
 
+> npm install -g @angular/cli
+
 > npm i
 
 > ng serve -o
